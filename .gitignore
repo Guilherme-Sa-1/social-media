@@ -1,0 +1,29 @@
+# Ignore ambientes virtuais
+ambiente-virtual/
+.venv/
+venv/
+
+# Arquivos compilados do Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Banco de dados local
+db.sqlite3
+
+# Arquivos de log
+*.log
+
+# Configurações de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de execução do VS Code
+.vscode/
+
+# Arquivos do Poetry que não precisam ser versionados
+poetry.lock
+
+# Scripts de desenvolvimento
+dev.sh
+dev.py

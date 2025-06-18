@@ -1,0 +1,28 @@
+[project]
+name = "rede-social"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Guilherme Sa",email = "guilhermecgsa7@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "fastapi[standard] (>=0.115.13,<0.116.0)",
+    "tortoise-orm[asyncpg] (>=0.25.1,<0.26.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages=[{include= "src"}]
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.14.1"
+
+[tool.taskipy.tasks]
+dev = "fastapi dev dev.py"
+prod =  "uvicorn src.api.application:app --host 0.0.0.0 --port 8000 --reload"
