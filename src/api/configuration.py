@@ -19,7 +19,7 @@ def configure_db(app):
                 'apps': {
                     'models': {
                         'models': [
-                            'src.datalayer.models.user'
+                            'src.datalayer.models.users'
                         ],
                         'default_connection': 'default',
                     }
