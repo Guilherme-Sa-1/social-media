@@ -1,7 +1,7 @@
-from fastapi import APIRouter
-from src.api.dtos.users import UserRegistration,UserLogin
-from src.datalayer.models.users import UserModel
-from src.api.exceptions.users import login_wrong_exception,email_already_registered_exception
+from typing import Annotated
+from fastapi import APIRouter, Depends
+from src.api.dtos.users import UserRegistration, UserLogin
+from src.services.users import UserService
 
 router = APIRouter(
     prefix="/users",
@@ -11,30 +11,34 @@ router = APIRouter(
 
 
 @router.post("/register")
-async def register(body:UserRegistration):
+async def register(body: UserRegistration, service: Annotated[UserService, Depends(UserService)]):
 
-        email_exist= await UserModel.get(email=body.email)
-        if email_exist:
-                raise email_already_registered_exception()
+    response = await service.register(
+        name=body.name, 
+        email=body.email, 
+        password=body.password
+    )
 
-        user = await UserModel.create (
-                name = body.name,
-                email = body.email,
-                password = body.password,
-        )
-        return {'created':user}
+    return {'token': response}
 
 @router.post("/login")
-async def login(body:UserLogin):
+async def login(
+    body: UserLogin, 
+    service: Annotated[UserService, Depends(UserService)]
+):
 
-        user=None
-        try:
-              user = await UserModel.get(email=body.email)
-        except Exception:
-                raise login_wrong_exception()
+    response = await service.login(
+        email=body.email,
+        password=body.password
+    )
 
-        if user.password != body.password:
-                raise login_wrong_exception()
+    return {'token': response}
 
-        return user
+@router.get('/all-users')
+async def get_all_users(service: Annotated[UserService, Depends(UserService)]):
+    return await service.get_all_users()
 
+
+@router.get('/get-mini-user/{user_id}')
+async def get_mini_user(user_id: int, service: Annotated[UserService, Depends(UserService)]):
+    return await service.get_mini_user(user_id)
