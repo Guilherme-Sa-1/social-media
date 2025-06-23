@@ -29,7 +29,7 @@ async def login(body:UserLogin):
 
         user=None
         try:
-              user = await email_exist=UserModel.get(email=body.email)
+              user = await UserModel.get(email=body.email)
         except Exception:
                 raise login_wrong_exception()
 
