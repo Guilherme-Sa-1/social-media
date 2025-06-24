@@ -1,20 +1,23 @@
-[tool.poetry]
-name = "rede-social"
+[project]
+name = "vemserfort"
 version = "0.1.0"
 description = ""
-authors = ["Guilherme Sa <guilhermecgsa7@gmail.com>"]
+authors = [
+    { name = "Guilherme Sa", email = "guilhermecgsa7@gmail.com" }
+]
 readme = "README.md"
-packages = [{ include = "src" }]
-
-[tool.poetry.dependencies]
-python = ">=3.10,<4.0"
-fastapi = { extras = ["standard"], version = ">=0.115.13,<0.116.0" }
-tortoise-orm = { extras = ["asyncpg"], version = ">=0.25.1,<0.26.0" }
-pydantic-settings = ">=2.10.0,<3.0.0"
-python-dotenv = "^1.1.1"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "fastapi[standard]>=0.115.13,<0.116.0",
+    "tortoise-orm[asyncpg]>=0.25.1,<0.26.0",
+    "pydantic-settings>=2.10.0,<3.0.0"
+]
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.14.1"
+
+[tool.poetry]
+packages = [{ include = "src" }]
 
 [tool.taskipy.tasks]
 dev = "fastapi dev dev.py"

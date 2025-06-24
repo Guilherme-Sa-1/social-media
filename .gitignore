@@ -1,51 +1,5 @@
-# Diretórios e arquivos específicos a serem ignorados
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Arquivos de ambiente
-.env
-.env.*
+*.pyc
 ambiente-virtual
-
-# Arquivos de configuração local
-*.local
-
-# Arquivos de IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Arquivos de log e banco de dados
-*.log
-*.sqlite
-*.db
-
-# Arquivos de compilação
-*.mo
-*.pot
-
-# Arquivos de pacotes Python
-*.egg-info/
-dist/
-build/
-
-# Arquivos de cache
-.pytest_cache/
-.mypy_cache/
-
-# Arquivos do Poetry
-poetry.lock
-# (Note: pyproject.toml geralmente NÃO deve ser ignorado)
-
-# Arquivos do Docker
-docker-compose.override.yml
-
-# Arquivos de sistema
-.DS_Store
-Thumbs.db
-
-# Arquivos de desenvolvimento
-dev.py
-dev.sh
+db.sqlite3*
+.env
+.env.prod

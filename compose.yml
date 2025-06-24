@@ -1,5 +1,5 @@
 services:
-  socialnetworktute_api:
+  socialnetwork_api:
     build: .
     ports:
-      - "8000:8000"
+      - "80:80"

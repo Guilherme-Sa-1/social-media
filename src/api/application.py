@@ -10,8 +10,10 @@ def create_app():
 
     configure_middlewares(app)
     
+    # incluir rotas
     configure_routes(app)
     
+    # inicializar db/tortoise
     configure_db(app)
 
     return app
