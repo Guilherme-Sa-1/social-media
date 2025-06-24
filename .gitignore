@@ -9,7 +9,7 @@ __pycache__/
 *.pyo
 
 # Banco de dados local
-db.sqlite3
+db.sqlite3*
 
 # Arquivos de log
 *.log
