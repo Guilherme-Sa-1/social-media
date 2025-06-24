@@ -2,14 +2,16 @@ from fastapi import FastAPI, Request
 from tortoise.contrib.fastapi import register_tortoise
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from src.api.routes import users
-from src.api.routes import home
-from src.api.routes import post
+from dotenv import load_dotenv  
+from src.api.routes import users, home, post
+
+load_dotenv()
 
 ALLOWED_HOSTS = [
     "https://social-network-front-production-f940.up.railway.app",
-    "http://localhost:5000", # dev front
+    "http://localhost:5000",  # dev front
 ]
+
 
 class Settings(BaseSettings):
     DATABASE_URL: str
@@ -32,7 +34,6 @@ def configure_db(app: FastAPI):
         app=app,
         config={
             'connections': {
-                # 'default': 'postgres://postgres:qwerty123@localhost:5432/events'
                 'default': app_settings.DATABASE_URL
             },
             'apps': {

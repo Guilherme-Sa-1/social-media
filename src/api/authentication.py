@@ -1,6 +1,6 @@
 from functools import wraps
 from fastapi import HTTPException
-from src.datalayer.models.users import UserModel
+from src.datalayer.models.user import UserModel
 
 async def verify_token(token: str):
     user = await get_user_by_token(token)

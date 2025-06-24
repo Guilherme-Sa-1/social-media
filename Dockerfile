@@ -2,19 +2,23 @@
 
 FROM python:3.10-buster
 
+# Instala dependências básicas
 WORKDIR /app
 
-# Instala Poetry
+# Instala o Poetry
 RUN pip install poetry --no-cache-dir
 
-# Copia os arquivos do projeto
+# Copia arquivos necessários para instalar dependências
 COPY pyproject.toml poetry.lock ./
 
-# Instala as dependências sem instalar o próprio projeto
+# Instala as dependências (sem instalar o projeto como pacote)
 RUN poetry install --no-root
 
-# Copia o restante do projeto
+# Copia o restante do código para a imagem
 COPY . .
 
-# Comando para iniciar (ajuste conforme necessário)
-CMD ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Expõe a porta usada pelo Uvicorn
+EXPOSE 8000
+
+# Comando para iniciar a aplicação via Taskipy
+CMD ["poetry", "run", "task", "prod"]

@@ -1,29 +1,51 @@
-# Ignore ambientes virtuais
-ambiente-virtual/
-.venv/
-venv/
-
-# Arquivos compilados do Python
+# Diretórios e arquivos específicos a serem ignorados
 __pycache__/
 *.py[cod]
-*.pyo
+*$py.class
 
-# Banco de dados local
-db.sqlite3*
+# Arquivos de ambiente
+.env
+.env.*
+ambiente-virtual
 
-# Arquivos de log
+# Arquivos de configuração local
+*.local
+
+# Arquivos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Arquivos de log e banco de dados
 *.log
+*.sqlite
+*.db
 
-# Configurações de sistema operacional
+# Arquivos de compilação
+*.mo
+*.pot
+
+# Arquivos de pacotes Python
+*.egg-info/
+dist/
+build/
+
+# Arquivos de cache
+.pytest_cache/
+.mypy_cache/
+
+# Arquivos do Poetry
+poetry.lock
+# (Note: pyproject.toml geralmente NÃO deve ser ignorado)
+
+# Arquivos do Docker
+docker-compose.override.yml
+
+# Arquivos de sistema
 .DS_Store
 Thumbs.db
 
-# Arquivos de execução do VS Code
-.vscode/
-
-# Arquivos do Poetry que não precisam ser versionados
-poetry.lock
-
-# Scripts de desenvolvimento
-dev.sh
+# Arquivos de desenvolvimento
 dev.py
+dev.sh

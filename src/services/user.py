@@ -1,5 +1,5 @@
-from src.datalayer.models.users import UserModel
-from src.api.exceptions.users import (
+from src.datalayer.models.user import UserModel
+from src.api.exceptions.user import (
     login_wrong_exception, 
     email_already_exists
 )

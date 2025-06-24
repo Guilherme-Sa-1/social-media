@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends
 from src.api.dtos.users import UserRegistration, UserLogin
-from src.services.users import UserService
+from src.services.user import UserService
 
 router = APIRouter(
     prefix="/users",

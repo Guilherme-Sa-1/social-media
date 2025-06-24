@@ -7,7 +7,6 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-
 @router.get("/")
 @login_required
 async def informations(request: Request):
