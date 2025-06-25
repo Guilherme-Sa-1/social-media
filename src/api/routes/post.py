@@ -1,6 +1,6 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, Request
-from src.api.dtos.posts import PostCreation, CommentCreation
+from src.api.dtos.post import PostCreation, CommentCreation
 from src.services.post import PostService
 from src.api.authentication import login_required
 

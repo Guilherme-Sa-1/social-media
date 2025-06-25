@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from tortoise.contrib.fastapi import register_tortoise
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from src.api.routes import users
+from src.api.routes import user
 from src.api.routes import home
 from src.api.routes import post
 
@@ -23,7 +23,7 @@ app_settings = Settings()
 
 def configure_routes(app: FastAPI):
     home_show(app)
-    app.include_router(users.router)
+    app.include_router(user.router)
     app.include_router(home.router)
     app.include_router(post.router)
 
