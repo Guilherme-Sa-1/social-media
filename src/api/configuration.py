@@ -2,13 +2,12 @@ from fastapi import FastAPI, Request
 from tortoise.contrib.fastapi import register_tortoise
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from src.api.routes import user
-from src.api.routes import home
-from src.api.routes import post
+from src.api.routes import user,home,post
 
 ALLOWED_HOSTS = [
     "https://social-network-front-production-f940.up.railway.app",
     "http://localhost:5000", # dev front
+    "http://127.0.0.1:5500/"
 ]
 
 class Settings(BaseSettings):
